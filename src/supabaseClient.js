@@ -1,6 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = 'https://wfncmrchltcvgialghrz.supabase.co'
-const supabaseKey = 'sb_publishable_uiHDDn-zM1F8qCa5zu3UYQ_AAGjykvp'
+// Ab ye keys seedha system se uthayega, code mein nahi dikhengi
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error('Missing Supabase URL or Key')
+}
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
